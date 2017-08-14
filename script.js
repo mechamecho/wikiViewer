@@ -9,8 +9,8 @@ function adjustTitle(title){
     }
         
         return newTitle;
-    };
-$(document).ready(function(){
+    }
+$("document").ready(function(){
     $("#searchWikipedia").submit(function(event){
         event.preventDefault();
         var url="https://en.wikipedia.org/w/api.php";
@@ -24,11 +24,9 @@ $(document).ready(function(){
             url:url, 
             data:data,
             success:function(response){
-                console.log(response);
                 var html="<ul class='list-group'>"
                 var results=response.query.search;
                 $.each(results, function(index,item){
-                    var searchTitle=
                     html+="<li class='list-group-item'><h2><a href='https://en.wikipedia.org/wiki/"+adjustTitle(item.title)+"'>"+item.title+"</a></h2></li><li class='list-group-item'><em>"+item.snippet+"</em></li>";    
                 });
                 html+="</ul>"
